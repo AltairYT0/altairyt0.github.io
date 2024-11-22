@@ -1,0 +1,97 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 1s ease-in-out;
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.25; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(128,0,128,0.7), rgba(0,0,0,1));
+    opacity: 0;
+    z-index: 2;
+    animation: shock 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes shock {
+    0% { width: 0; height: 0; opacity: 0.7; }
+    100% { width: 200vw; height: 200vh; opacity: 0; }
+}
+
+.purple-bg {
+    background-color: #410061;
+}
+
+.reveal-button {
+    background-color: #333;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 50%;
+    width: 5vw;
+    height: 5vw;
+    max-width: 50px;
+    max-height: 50px;
+    font-size: max(3vw, 16px);
+    cursor: pointer;
+    animation: hoverEffect 2s ease-in-out infinite alternate, fadeIn 2s ease-in-out forwards;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+@keyframes hoverEffect {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 1s ease-in-out, top 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.star-moving {
+    animation: none !important;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .reveal-button {
+        font-size: max(4vw, 16px);
+    }
+}
