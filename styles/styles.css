@@ -1,7 +1,7 @@
 body {
     background-color: #121212;
     color: #e0e0e0;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -10,17 +10,43 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    transition: background-color 1s ease-in-out;
+    transition: background-color 1.5s ease-in-out;
+    user-select: none;
+    cursor: none;
+}
+button:hover, a:hover, input:hover, textarea:hover, select:hover, label:hover {
+    cursor: none;
+}
+
+button:hover ~ .cursor,
+a:hover ~ .cursor,
+input:hover ~ .cursor,
+textarea:hover ~ .cursor,
+select:hover ~ .cursor,
+label:hover ~ .cursor {
+    transform: scale(1.2);
+    background-color: #06ff82a1;
+}
+
+.cursor {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transition: transform 0.2s ease-out;
+    z-index: 10;
 }
 
 @keyframes fade {
     0%, 100% { opacity: 0; }
-    50% { opacity: 0.25; }
+    50% { opacity: 0.35; }
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    50% { opacity: 0.6; transform: scale(0.9); box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
 }
 
 .shockwave {
@@ -31,7 +57,7 @@ body {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(128,0,128,0.7), rgba(0,0,0,1));
+    background: radial-gradient(circle, rgba(150, 50, 200, 0.7), rgba(0, 0, 0, 1));
     opacity: 0;
     z-index: 2;
     animation: shock 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -42,25 +68,25 @@ body {
     100% { width: 200vw; height: 200vh; opacity: 0; }
 }
 
-.purple-bg {
-    background-color: #410061;
-}
-
 .reveal-button {
-    background-color: #333;
+    background-color: #4a148c;
     color: #e0e0e0;
     border: none;
     border-radius: 50%;
-    width: 5vw;
-    height: 5vw;
-    max-width: 50px;
-    max-height: 50px;
-    font-size: max(3vw, 16px);
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
     cursor: pointer;
     animation: hoverEffect 2s ease-in-out infinite alternate, fadeIn 2s ease-in-out forwards;
     opacity: 0;
     z-index: 1;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.reveal-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes hoverEffect {
@@ -76,7 +102,8 @@ body {
     position: absolute;
     background-color: white;
     border-radius: 50%;
-    transition: left 1s ease-in-out, top 1s ease-in-out, opacity 1s ease-in-out;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transition: left 1s ease-in-out, top 1s ease-in-out, opacity 1s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .star-moving {
@@ -90,8 +117,62 @@ body {
     40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
-@media (max-width: 768px) {
-    .reveal-button {
-        font-size: max(4vw, 16px);
-    }
+.animated-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 80vw;
+    height: auto;
+    background-color: #4a148c;
+    border-radius: 10px;
+    z-index: 3;
+    opacity: 0;
+    transition: transform 1.5s ease-in-out, opacity 1s ease-in-out, box-shadow 1s ease-in-out;
+    border: 3px solid #6a1b9a;
+    box-shadow: 0 0 20px rgba(100, 0, 150, 0);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.animated-box.animate {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(100, 0, 150, 0.7);
+}
+
+.animated-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.animated-box img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.animated-box .profile-name {
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.animated-box .profile-about {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #e0e0e0;
 }
