@@ -60,8 +60,20 @@ function handleRevealButtonClick() {
 
         document.body.style.animation = 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
 
+        const soonText = document.createElement('div');
+        soonText.textContent = 'SOON...';
+        soonText.style.position = 'absolute';
+        soonText.style.top = '50%';
+        soonText.style.left = '50%';
+        soonText.style.transform = 'translate(-50%, -50%)';
+        soonText.style.fontSize = '4em'; 
+        soonText.style.opacity = 0;
+        soonText.style.transition = 'opacity 3s ease-in'; 
+        document.body.appendChild(soonText);
+
         setTimeout(() => {
             document.body.style.animation = '';
+            soonText.style.opacity = 1; 
         }, 500);
     }, 2000);
 }
