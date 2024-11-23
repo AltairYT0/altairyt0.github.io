@@ -12,32 +12,8 @@ body {
     overflow: hidden;
     transition: background-color 1.5s ease-in-out;
     user-select: none;
-    cursor: none;
-}
-button:hover, a:hover, input:hover, textarea:hover, select:hover, label:hover {
-    cursor: none;
 }
 
-button:hover ~ .cursor,
-a:hover ~ .cursor,
-input:hover ~ .cursor,
-textarea:hover ~ .cursor,
-select:hover ~ .cursor,
-label:hover ~ .cursor {
-    transform: scale(1.2);
-    background-color: #06ff82a1;
-}
-
-.cursor {
-    width: 30px;
-    height: 30px;
-    border: 1px solid white;
-    border-radius: 50%;
-    position: absolute;
-    pointer-events: none;
-    transition: transform 0.2s ease-out;
-    z-index: 10;
-}
 
 @keyframes fade {
     0%, 100% { opacity: 0; }

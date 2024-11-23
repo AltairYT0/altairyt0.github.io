@@ -19,20 +19,6 @@ function createStars() {
 createStars();
 
 const revealButton = document.querySelector('.reveal-button');
-const cursor = document.querySelector('.cursor');
-
-document.addEventListener('mousemove', e => {
-    cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px';
-});
-
-document.addEventListener('mousedown', () => {
-    cursor.style.transform = 'scale(0.8)';
-});
-
-document.addEventListener('mouseup', () => {
-    cursor.style.transform = 'scale(1)';
-});
 
 revealButton.addEventListener('touchstart', (event) => {
     event.preventDefault();
